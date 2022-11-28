@@ -30,14 +30,14 @@ let pos = 0;
 let steps = 0;
 
 const duplicateSearch=(arr,item1)=>{
-    steps++
+  
     for(var i=0; i < arr.length; i++){
         if (item1 == arr[i])
     {
         pos = i + 1;
         break;
     }
-  
+    steps++
     }
     if (pos == 0){
         console.log("Item Not found in array");
