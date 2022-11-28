@@ -155,7 +155,7 @@ const floorAndCeil=(arr,item)=>
 
 // finding missing array number and target index value 
 
-let arr3= [ 2,3,4,7,11]
+/* let arr3= [ 2,3,4,7,11]
 
 let target1= 5
 
@@ -174,10 +174,111 @@ while(ma.length < target1){
     
 }
 console.log(ma+ ' new array of missing array')
-console.log(ma[target1-1] + ' taget')
+console.log(ma[target1-1] + ' taget') */
 //[ 1, 5, 6, 8, 9, 10 ]
 //9
 
 // problem 
 
 //const arr4= [a,b,f]
+
+
+
+// PROBLEM
+// FIND FIRST PALINDROM STRING IN A ARRAY 
+
+
+/* 
+let strArr = ['abc','ada', 'car','receacar', 'cool']
+
+function findpalindrom(str){
+    let k= str.length-1 
+    let i=0
+    while(i <=k){
+      if(str[i] != str[k]){
+        return false
+      }
+        i++
+        k--
+      
+    }
+    return true
+}
+
+
+const findRistPalind = (arr)=>{
+    for(let i =0; i< arr.length; i++){
+        if(findpalindrom(arr[i])){
+            return arr[i]
+        }
+    }
+    return " "
+
+}
+
+
+console.log(findRistPalind(strArr)) */
+
+
+
+/* let strArr = ['abc', 'car', 'ada' ,'receacar', 'cool']
+
+function findpalindrom(str){
+    let k= str.length-1 
+    let i=0
+    while(i <=k){
+      if(str[i] != str[k]){
+        return false
+      }
+        i++
+        k--
+      
+    }
+    return true
+}
+
+
+const findRistPalind = (arr)=>{
+    for(let i =0; i< arr.length; i++){
+        if(findpalindrom(arr[i])){
+            return arr[i]
+        }
+    }
+    return ' '
+
+}
+
+
+console.log(findRistPalind(strArr))  */
+
+let strArr = ['abc', 'car', 'ada' ,'mom','receacar', 'cool']
+
+function findpalindrom(str){
+    let k= str.length-1 
+    let i=0
+    while(i <=k){
+      if(str[i] != str[k]){
+        return false
+      }
+        i++
+        k--
+      
+    }
+    return true
+}
+
+
+const findRistPalind = (arr)=>{
+    let count=0
+    for(let i =0; i< arr.length; i++){
+        if(findpalindrom(arr[i])){
+          //  return arr[i]
+          count++
+        }
+    }
+    return count
+
+}
+
+// finding how many palindrom in an array?
+console.log(findRistPalind(strArr)) 
