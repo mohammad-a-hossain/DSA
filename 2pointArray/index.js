@@ -38,6 +38,8 @@ console.log('reverse array :'+ arr)
 
 
 
+
+
 // P A L I N D R O M
 
 const palindrom =(str)=>{

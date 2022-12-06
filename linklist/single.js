@@ -157,7 +157,9 @@ class Node{ // node class
             } 
             this.length++;
         }
- 
+              // TIME COMPLEXITY IS O(1)
+
+
         pop(){                    // pop means delete data from tail /end
             if(!this.head){ // if there is no data or head is null
                return null     
@@ -187,6 +189,9 @@ class Node{ // node class
               this.length--           // after deleting the last node the index will decrese
               return lastNode        // now lastnode which is deleted will be seen
         }
+                  // TIME COMPLEXITY IS O(n)
+
+
 
         shift(){               // deleting first element from list
             if(!this.head){
@@ -206,8 +211,10 @@ class Node{ // node class
             }
            return newHead
         }
+              // TIME COMPLEXITY IS O(1)
 
-        unshift(value){               /// unsit means data will inset first index 
+
+        unshift(value){               /// unsift means data will inset first index 
             let newHead  =new Node(value)
                 if(!this.head){ // suppose there is empty
                     this.head= newHead  // first node will be new unsifted data
@@ -218,6 +225,8 @@ class Node{ // node class
                 }
                 this.length++                 // then length will be increase
         }
+
+            // TIME COMPLEXITY IS O(1)
 
         showList(){        // now showing all list data
             let displayList =[]
@@ -233,8 +242,10 @@ class Node{ // node class
             return displayList
 
         }
+
+            // TIME COMPLEXITY IS O(n)
         
-        get(index) { // if need to get an index 
+      /*   get(index) { // if need to get an index 
             
             if (index < 0 || index >= this.length) {
               return null;
@@ -249,9 +260,63 @@ class Node{ // node class
         
               return currentNode;
             }
+        } */
+            get(index) { // if need to get an index 
+              let count = 0;
+              let currentNode = this.head;
+        
+            if (index < 0 || index >= this.length) {
+              return null;
+            } 
+            
+              while (currentNode != null) {
+               if(count == index){
+                return currentNode
+              
+               }
+                 count++
+                currentNode= currentNode.next
+              }
+        
+              return currentNode;
+            }
+
+            remove(index){
+                if(index < 0 || index >= this.length){
+                    return null 
+                }else if(index == 0){
+                    return this.shift()
+                }else if(index == this.length -1){
+                    return this.pop()
+                }else{
+                    let preNodeOfremove = this.get(index -1) // find the previouse index of remeove index
+                    let nodeToRemove = preNodeOfremove.next // replace the removved index by prev.next node
+                    preNodeOfremove.next = nodeToRemove.next // set replace node will be next node
+                    this.length--                           // then decrease the length
+
+                    return index                 
+
+                }
+                
+            }
+            set(index, value) {
+                // get the node at the desired index
+                const currentNode = this.get(index);
+                // if the node does exist
+                if (currentNode) {
+                  // set its value to the desired new value
+                  currentNode.value = value;
+                  // and return it
+                  return currentNode;
+                } else {
+                  // if the node does not exist, return null
+                  return null;
+                }
+              }
+
         }
  
-    }
+    
     
     let list =new SinglyLinkedList();
 
@@ -312,6 +377,12 @@ console.log(list.showList()) */
 https://dev.to/miku86/javascript-data-structures-singly-linked-list-remove-fai */
 
 list.push(3)
+list.push(30)
+list.push(300)
+//console.log(list)
+//console.log(list.get(1))
 console.log(list)
-console.log(list.get(2))
-console.log(list.showList())
+list.remove(1)
+console.log(list)
+list.set(0,100)
+console.log(list)
