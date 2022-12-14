@@ -1,5 +1,20 @@
 ## this is DSA practise
 
+- Topics: - No. of class
+- Linear & Binary Searching - 3
+- Time & Space Complexity - 1
+- Two pointer algorithm - 2
+- Pre-processing & kadanes algo - 1
+- Bubble sort & selection sort - 1
+- Linked List - 4 / 5
+- Stack, Queue & Deque - 2
+- Hash Table - 2
+- Recursive algorithm - 4 / 5 / 6
+- Dynamic programming - 1
+- Greedy Algorithm - 1
+- Binary Tree & BST - 4
+- Graph Algorithm - 4
+
 
 ### problem need to be solved
 
@@ -54,3 +69,17 @@
 167. Two Sum II - Input Array Is Sorted
 
 151. Reverse Words in a String
+
+
+
+
+**resources**
+https://dev.to/miku86/javascript-data-structures-singly-linked-list-remove-fai
+
+https://www.sahinarslan.tech/posts/deep-dive-into-data-structures-using-javascript-doubly-linked-list
+
+
+circluar double linklist resources
+https://www.sahinarslan.tech/posts/deep-dive-into-data-structures-using-javascript-circular-doubly-linked-list
+
+

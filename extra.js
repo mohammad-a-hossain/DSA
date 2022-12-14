@@ -145,3 +145,126 @@ list.pop()
 console.log(list)
 
 
+/* pop(){                
+    if(!this.head){ 
+       return null     
+    }
+
+    if(this.length ===1){ 
+        let removeNode 
+        this.head =null 
+        this.tail= null 
+        this.length =0
+        return removeNode
+    }
+    
+    let currentNode = this.head 
+    let lastNode = this.tail       
+    let nodeToPop          
+
+    while(currentNode){ 
+        if(currentNode.next == this.tail){ 
+            nodeToPop = currentNode 
+            break                     
+        }
+        currentNode = currentNode.next 
+    }
+    nodeToPop.next = null
+      this.tail = nodeToPop  
+      this.length--          
+      return lastNode       
+};
+
+ */
+
+
+shift(){               
+    if(!this.head){
+        return null  
+    }
+    let newHead = this.head  
+    
+    if(this.length ===1){
+       this.head =null
+        this.tail = null
+        this.length =0
+    }
+  
+    if(this.length > 1){
+      this.head = newHead.next
+        this.length--   
+    }
+   return newHead
+}
+
+get(index) { 
+    let count = 0;
+    let currentNode = this.head;
+
+  if (index < 0 || index >= this.length) {
+    return null;
+  } 
+  
+    while (currentNode != null) {
+     if(count == index){
+      return currentNode   
+     }
+       count++
+      currentNode= currentNode.next
+    }
+
+    return currentNode;
+  }
+
+    remove(index){
+        if(index < 0 || index >= this.length){
+            return null 
+        }else if(index == 0){
+            return this.shift()
+        }else if(index == this.length -1){
+            return this.pop()
+        }else{                                  
+            let preNodeOfremove = this.get(index -1)
+            let nodeToRemove = preNodeOfremove.next 
+            preNodeOfremove.next = nodeToRemove.next 
+            this.length--                        
+
+            return index                 
+
+        }
+    
+    }
+
+
+    set(index, value) {
+        const currentNode = this.get(index);
+        if (currentNode) {
+          currentNode.value = value;
+          return currentNode;
+        } else {
+          return null;
+        }
+      }
+
+
+      insertAt(value,index){
+                
+        if(index < 0 || index >= this.length){
+            return null 
+        }else if(index == 0){
+            return this.unshift(value)
+        }else if(index == this.length -1){
+            return this.push(value)
+        }else{      
+            let nodeToInsert = new Node(value)
+                                      
+            let getPrevNode = this.get(index -1) 
+                nodeToInsert.next= getPrevNode.next
+                getPrevNode.next =nodeToInsert
+
+                this.length++
+
+          return nodeToInsert                 
+           
+        }
+    }

@@ -128,6 +128,8 @@ class Node{ // node class
         this.next= null
     }
  }
+
+
     class SinglyLinkedList{
         constructor(){
             this.head=null;
@@ -135,19 +137,14 @@ class Node{ // node class
             this.length=0;
         }
     
-        isEmpty(){
+        isLength(){
            return this.length === 0;
         }
     
-        push(value){      // add element to the end
-           /*  let newNode = {
-                value: value,
-                next: null 
-            }
-     */
+        push(value){     
            let newNode= new Node(value)
-
-            if(this.isEmpty()){
+             // newNode is instance of Node to be inseted
+            if(this.isLength()){
                 this.head=newNode;
                 this.tail=newNode;
             }else{
@@ -172,20 +169,20 @@ class Node{ // node class
                 this.length =0
                 return removeNode
             }
-
+            // [ a b c]
             let currentNode = this.head // suppoe head is currentNode 
             let lastNode = this.tail      // suppose tail is lastNode 
-            let newLastNode            // suppose a new node newLastNode will repalace as lastnode
+            let nodeToPop           // suppose a new node nodeToPop will repalace as lastnode
 
             while(currentNode){ // suppose there data is array 
                 if(currentNode.next == this.tail){ // data next is suppose is tail 
-                    newLastNode = currentNode // so newLastNode will be replaced as currentNode 
+                    nodeToPop = currentNode // so nodeToPop will be replaced as currentNode 
                     break                      // and the algo will break
                 }
                 currentNode = currentNode.next // otherwise currentNode will increase as next node 
             }
-              newLastNode.next = null  // now next Lastnode will be null or delete
-              this.tail = newLastNode  // and new tail will be newlastNode
+            nodeToPop.next = null  // now next Lastnode will be null or delete
+              this.tail = nodeToPop  // and new tail will be nodeToPop
               this.length--           // after deleting the last node the index will decrese
               return lastNode        // now lastnode which is deleted will be seen
         }
@@ -228,40 +225,44 @@ class Node{ // node class
 
             // TIME COMPLEXITY IS O(1)
 
-        showList(){        // now showing all list data
-            let displayList =[]
-            if(!this.head){
-                return 'empty list'
-            }else{
-                let current= this.head 
-                while(current){
-                    displayList += ` ${ current.value}`
-                    current = current.next
+        showList(){// now showing all list data
+         let displayList =[]
+         if(!this.head){
+            return 'empty list'
+          }else{
+          let current= this.head 
+         while(current){
+            displayList += ` ${ current.value}`
+            current = current.next
                 }
             }
-            return displayList
+         return displayList
 
         }
-
-            // TIME COMPLEXITY IS O(n)
-        
-      /*   get(index) { // if need to get an index 
-            
+        get(index) {
+            // return null if index is negative or equal to or greater than the length of the List
             if (index < 0 || index >= this.length) {
               return null;
             } else {
-              let count = 0;
+              // start at the beginning of the List
               let currentNode = this.head;
+              // keep track how many times we went to the next node
+              let count = 0;
         
+              // as long as the current count is smaller than the desired node's index
               while (count < index) {
+                // set the next node as the currentNode
                 currentNode = currentNode.next;
+                // increase the count by 1
                 count += 1;
               }
         
+              // return this node
               return currentNode;
             }
-        } */
-            get(index) { // if need to get an index 
+        }
+            // TIME COMPLEXITY IS O(n)
+            get(index) { 
               let count = 0;
               let currentNode = this.head;
         
@@ -271,8 +272,7 @@ class Node{ // node class
             
               while (currentNode != null) {
                if(count == index){
-                return currentNode
-              
+                return currentNode   
                }
                  count++
                 currentNode= currentNode.next
@@ -288,14 +288,38 @@ class Node{ // node class
                     return this.shift()
                 }else if(index == this.length -1){
                     return this.pop()
-                }else{
+                }else{                                  // a b {c} d
                     let preNodeOfremove = this.get(index -1) // find the previouse index of remeove index
-                    let nodeToRemove = preNodeOfremove.next // replace the removved index by prev.next node
-                    preNodeOfremove.next = nodeToRemove.next // set replace node will be next node
+                    /* let nodeToRemove = preNodeOfremove.next // replace the removved index by prev.next node
+                    preNodeOfremove.next = nodeToRemove.next // set replace node will be next node */
+                      preNodeOfremove.next= preNodeOfremove.next.next
+                   
                     this.length--                           // then decrease the length
 
                     return index                 
 
+                }
+                
+            }
+            insertAt(value,index){
+                
+                if(index < 0 || index >= this.length){
+                    return null 
+                }else if(index == 0){
+                    return this.unshift(value)
+                }else if(index == this.length -1){
+                    return this.push(value)
+                }else{      
+                    let nodeToInsert = new Node(value)
+                                                // a b {c} d
+                     let getPrevNode = this.get(index -1) // find the previouse index of remeove index
+                         nodeToInsert.next= getPrevNode.next
+                        getPrevNode.next =nodeToInsert
+
+                        this.length++
+
+                  return nodeToInsert                 
+                    //console.log({getPrevNode})
                 }
                 
             }
@@ -320,69 +344,37 @@ class Node{ // node class
     
     let list =new SinglyLinkedList();
 
-
-  /*   list.push(1);
-    list.push(100);
-     */
-
-  /*   list.pop(101)
-    console.log(list)
-    list.pop()
-    console.log(list)  
-     list.pop() 
-     console.log(list) 
-     list.pop() 
-     console.log(list)  */
-   /*   list.shift()
-   
-     console.log(list) 
-     list.shift()
-   
-     console.log(list) 
-     list.shift()
-   
-     console.log(list) 
-     list.shift() */
-   
-     //console.log(list) 
-  /*    list.shift()
-     console.log(list) 
-     list.shift()
-     console.log(list) 
-     list.shift()
-     console.log(list)  */
-     /* list.shift()
-     console.log(list)
-     list.push(33)
-     console.log(list)
-   console.log(list)
-    list.unshift(333)
-    console.log(list)
-    list.unshift(33)
-    console.log(list)
-    list.pop()*/
-   // console.log(list)
-    //list.unshift(500)
-   // console.log(list)
-    //list.unshift(5000)
-   // console.log(list)
-
-   // console.log(list) 
-/*     console.log(list.get(1))
-    console.log(list.get(0))
-console.log(list.showList()) */
-
-
-/*  for more lesson
-https://dev.to/miku86/javascript-data-structures-singly-linked-list-remove-fai */
-
-list.push(3)
+/* list.push(3)
 list.push(30)
 list.push(300)
-//console.log(list)
-//console.log(list.get(1))
 console.log(list)
+console.log(list.get(1))
+console.log(list.get(2)) */
+
+list.push('A')
+list.push('B')
+list.unshift('C')
+
+console.log(list.showList()) 
+
+list.insertAt('F',0)
+
+console.log(list.get(3))
+
+list.insertAt('L',3)
+console.log(list.get(4) )
+
+console.log(list.get(0) )
+console.log(list.get(3))
+console.log(list.get(4))
+
+
+console.log(list.showList()) 
+list.insertAt('I',3)
+console.log(list.get(1) )
+console.log(list.showList()) 
+
+console.log(list.length) 
+list.remove(3)
 list.remove(1)
-console.log(list)
-list.set(0,100)
-console.log(list)
+console.log(list.showList()) 
