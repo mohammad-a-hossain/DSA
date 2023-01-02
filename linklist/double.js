@@ -32,8 +32,8 @@ class DoubleLinkList{
     }
 
     pop(){
-        let popNode = this.tail           /* [2,5, 3,   *4 ] */
-
+        let popNode = this.tail           /* [2,5, 3, [r o p]*4 ] */
+                                        //         ->      <-
         if(!this.head){
             return null 
         }
@@ -62,7 +62,7 @@ class DoubleLinkList{
            
         if(this.length ==1){
             this.head= null
-            this.tail =null      // [  a       *b c],[  ' '       *b c] 
+            this.tail =null      // [  a       *b   c],[  ' '       *b c] 
         }else{
             this.head = shiftNode.next // the node after the nodeToRemove should become the new head
             this.head.prev = null // remove both connections from the new head to the old head (= nodeToRemove)
@@ -84,7 +84,7 @@ class DoubleLinkList{
             this.head.prev = unshiftNode      // set the current head's prev to new node
             this.head= unshiftNode                            // set list's head to new node
         }
-                 this.length++
+            this.length++
 
           return unshiftNode
     }

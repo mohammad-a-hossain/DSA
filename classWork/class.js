@@ -282,3 +282,14 @@ const findRistPalind = (arr)=>{
 
 // finding how many palindrom in an array?
 console.log(findRistPalind(strArr)) 
+
+
+// hashmap class work ------------------------------------------------------------------------
+
+    // leetecode problem solving  two num sum
+    /* 
+    given an array and a target return indexes of two num which added num will be target same.
+
+    */
+   
+
