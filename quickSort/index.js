@@ -1,52 +1,63 @@
-// quick sorting
-
-function partition(){
- let pivot = arr[L]
- // count small data
- let count =0
- for(let i=L;i<=R;i++){
-    if(arr[i]< pivot){
-    count++
- } 
 
 
- }
-console.log('arr'+arr)
-console.log("count"+count)
-console.log('pivot'+pivot) 
+function partition(arr, l, r) {
+  let pivot = arr[l]; 
 
-// swapping data for getting and set pivot 
- let temp= arr[L]
-  arr[L] = arr[count]
-  arr[count] = temp
+  // count small data
+  let count = 0; 
+  for(let i = l; i <= r; i++) {
+      if(arr[i] < pivot) {
+          count++; 
+      }
+  } 
 
-  // small data (left) || pivot ||(right) large data
-  let i=L
-  let j= R
-  while(arr[i] !== pivot || arr[j] !== pivot){
-    if(arr[i] > pivot && arr[j] < pivot){
-        // now swap 
-        let temp= arr[i]
-        arr[i] = arr[j]
-        arr[j] = temp
+  count = count+l; 
 
-        i++
-        j++
-    }else if (arr[i] > pivot && arr[j] > pivot){
-       j++ 
-    }else{
-        i++
-    }
+  let temp = arr[l]; 
+  arr[l] = arr[count]; 
+  arr[count] = temp; 
+
+  // console.log(arr);
+  // console.log(count);
+  // console.log(pivot); 
+
+  // small datas | pivot | large datas
+  let i = l; 
+  let j = r; 
+  while(i < count || j > count) { 
+      if(arr[i] > pivot && arr[j] < pivot) {
+          let temp = arr[i]; 
+          arr[i] = arr[j]; 
+          arr[j] = temp; 
+
+          i++; 
+          j--; 
+      } 
+      else if(arr[i] > pivot && arr[j] > pivot) {
+          j--; 
+      } 
+      else {
+          i++; 
+      }
+  } 
+
+
+  return count; 
+} 
+
+
+function quickSort(arr, l, r) {
+  if(l < r) {
+      let p = partition(arr, l, r); 
+
+      quickSort(arr, l, p-1); // left
+      quickSort(arr, p+1, r); // right
   }
-}
+} 
 
-function quicksort(arr,L,R){
-       if(L < R){
-       
-        let p =partition(arr,L,R) 
-       // quicksort(arr,l,p-1)// for left part
-       // quicksort(arr,p+1,r) // for right part
-       }
-}
-let arr=[8,7,6,1,0,9,2]
-quicksort(arr,0, arr.length-1)
+
+let arr = [10, 20, 5, 6, 1, 30, 4]
+
+const result = quickSort(arr, 0, arr.length-1); 
+console.log(result)
+console.log(arr)
